@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  dnd-telegrambot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5002:8001"
+    restart: always
+    container_name: "dnd-container"
+    environment:
+      - ALLOWED_HOSTS= localhost 127.0.0.1
+    volumes:
+      - .:/code
+      - ./sqlite:/sqlite
