@@ -2,12 +2,13 @@ from .models import Message
 
 def telegram_format(request):
     r = flatten_json(request)
+    print(r)
 
     # MAIN
     if "message.from.id" in r:
-        chat_id = str(r["message.from.id"])
-    elif "callback_query.from.id" in r:
-        chat_id = str(r["callback_query.from.id"])
+        chat_id = str(r["message.chat.id"])
+    elif "callback_query.message.chat.id" in r:
+        chat_id = str(r["callback_query.message.chat.id"])
     else:
         chat_id = None
 
